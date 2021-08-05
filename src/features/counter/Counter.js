@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
+  create,
   decrement,
   increment,
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+  selectGrid,
+} from "./counterSlice";
+import styles from "./Counter.module.css";
 
 export function Counter() {
   const count = useSelector(selectCount);
+  const grid = useSelector(selectGrid);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  // dispatch(create());
+  console.log(grid);
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <div>
+      <p>{JSON.stringify(grid.board)}</p>
       <div className={styles.row}>
         <button
           className={styles.button}

@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchCount } from "./counterAPI";
+import CreateBoard from "../../utils/CreatedBoard";
 
+const newBoard = CreateBoard(16, 16, 40);
 const initialState = {
   value: 0,
   status: "idle",
-  board: [],
+  grid: newBoard,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -26,6 +28,9 @@ export const counterSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    create: (state) => {
+      state.board = CreateBoard(16, 16, 40);
+    },
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -55,12 +60,14 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { create, increment, decrement, incrementByAmount } =
+  counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectCount = (state) => state.counter.value;
+export const selectGrid = (state) => state.counter.grid;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
