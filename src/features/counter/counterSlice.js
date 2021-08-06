@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchCount } from "./counterAPI";
 import CreateBoard from "../../utils/CreatedBoard";
+import revealed from "../../utils/Reveal";
 
 const newBoard = CreateBoard(16, 16, 40);
 const initialState = {
   value: 0,
   status: "idle",
   grid: newBoard.board,
-  NonMinecount: 16 * 16 - 40,
+  nonMinecount: 16 * 16 - 40,
   mineLocations: newBoard.mineLocation,
 };
 
@@ -33,10 +34,28 @@ export const counterSlice = createSlice({
     updateFlag: (state, action) => {
       const x = action.payload[0];
       const y = action.payload[1];
-      state.grid[x][y].flagged = true;
+      state.grid[x][y].flagged = !state.grid[x][y].flagged;
     },
-    revealCell: (state, x, y) => {
-      console.log("revealCell");
+    revealCell: (state, action) => {
+      // console.log(action.payload);
+      const x = action.payload[0];
+      const y = action.payload[1];
+      state.grid[x][y].revealed = true;
+      if (state.grid[x][y].value === "X") {
+        alert("game over");
+        for (let i = 0; i < state.mineLocations.length; i++) {
+          state.grid[state.mineLocations[i][0]][
+            state.mineLocations[i][1]
+          ].revealed = true;
+        }
+      } else {
+        [state.grid, state.nonMinecount] = revealed(
+          state.grid,
+          x,
+          y,
+          state.nonMinecount
+        );
+      }
     },
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -81,6 +100,7 @@ export const {
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectCount = (state) => state.counter.value;
 export const selectGrid = (state) => state.counter.grid;
+export const selectNonMinecount = (state) => state.counter.nonMinecount;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

@@ -1,7 +1,9 @@
-export const revealed = (arr, x, y, newNonMinesCount) => {
-  if (arr[x][y].revealed) {
-    return;
-  }
+export default function revealed(arr, x, y, newNonMinesCount) {
+  console.log(arr[x][y]);
+  console.log(newNonMinesCount);
+  // if (arr[x][y].revealed) {
+  //   return;
+  // }
 
   // Stack of all the cells which we
   // would like to reveal/flip
@@ -163,6 +165,6 @@ export const revealed = (arr, x, y, newNonMinesCount) => {
       newNonMinesCount--;
     }
   }
-
-  return { arr, newNonMinesCount };
-};
+  console.log(arr);
+  return [arr, newNonMinesCount];
+}

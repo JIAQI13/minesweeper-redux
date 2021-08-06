@@ -29,12 +29,24 @@ export default function Cell({ details }) {
   return (
     <div
       style={style.cellStyle}
-      onClick={() => console.log(details)}
+      onClick={() => {
+        dispatch(revealCell([details.x, details.y]));
+      }}
       onContextMenu={(e) => {
         rightClickProvider(e, details);
       }}
     >
-      {details.value}
+      {!details.revealed && details.flagged ? (
+        "🚩"
+      ) : details.revealed && details.value !== 0 ? (
+        details.value === "X" ? (
+          <Circle />
+        ) : (
+          details.value
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 }

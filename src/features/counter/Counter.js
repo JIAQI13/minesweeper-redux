@@ -10,6 +10,7 @@ import {
   incrementIfOdd,
   selectCount,
   selectGrid,
+  selectNonMinecount,
 } from "./counterSlice";
 import styles from "./Counter.module.css";
 import Cell from "./Cell";
@@ -17,9 +18,10 @@ import Cell from "./Cell";
 export function Counter() {
   const count = useSelector(selectCount);
   const grid = useSelector(selectGrid);
+  const nonMinecount = useSelector(selectNonMinecount);
   const dispatch = useDispatch();
   // dispatch(create());
-  console.log(grid);
+  // console.log(grid);
   const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = 5 || 0;
@@ -32,6 +34,7 @@ export function Counter() {
   return (
     <div>
       <>
+        <p>{nonMinecount}</p>
         <div
           style={{
             display: "flex",
