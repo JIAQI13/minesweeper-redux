@@ -23,11 +23,11 @@ export function Board() {
           position: "relative",
         }}
       >
-        {grid.map((singleRow) => {
+        {grid.map((singleRow, i) => {
           return (
-            <div style={style}>
-              {singleRow.map((singleBlock) => {
-                return <Cell details={singleBlock}></Cell>;
+            <div key={i} style={style}>
+              {singleRow.map((singleBlock, i) => {
+                return <Cell key={i} details={singleBlock}></Cell>;
               })}
             </div>
           );
