@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { updateFlag, revealCell } from "./counterSlice";
-import { mineColor } from "../../utils/mineColor";
-import "../../App.css";
-import Circle from "../../utils/Circle";
+import { updateFlag, revealCell } from "./Minesweeper";
+import { mineColor } from "../utils/mineColor";
+import "../App.css";
+import Circle from "../utils/Circle";
 
 export default function Cell({ details }) {
   const dispatch = useDispatch();

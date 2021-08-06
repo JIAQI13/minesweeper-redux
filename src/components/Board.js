@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectGrid, selectNonMinecount } from "./counterSlice";
+import { selectGrid, selectNonMinecount } from "./Minesweeper";
 import Cell from "./Cell";
 
-export function Counter() {
+export function Board() {
   const grid = useSelector(selectGrid);
   const nonMinecount = useSelector(selectNonMinecount);
   const style = {

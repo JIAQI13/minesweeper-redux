@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import CreateBoard from "../../utils/CreatedBoard";
-import revealed from "../../utils/Reveal";
+import CreateBoard from "../utils/CreatedBoard";
+import revealed from "../utils/Reveal";
 
 const newBoard = CreateBoard(16, 16, 40);
 const initialState = {
