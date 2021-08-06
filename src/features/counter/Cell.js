@@ -1,6 +1,6 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateFlag, revealCell, selectGrid } from "./counterSlice";
+import { useDispatch } from "react-redux";
+import { updateFlag, revealCell } from "./counterSlice";
 import { mineColor } from "../../utils/mineColor";
 import "../../App.css";
 import Circle from "../../utils/Circle";
