@@ -6,7 +6,9 @@ const newBoard = CreateBoard(16, 16, 40);
 const initialState = {
   value: 0,
   status: "idle",
-  grid: newBoard,
+  grid: newBoard.board,
+  NonMinecount: 16 * 16 - 40,
+  mineLocations: newBoard.mineLocation,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -28,8 +30,11 @@ export const counterSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    create: (state) => {
-      state.board = CreateBoard(16, 16, 40);
+    updateFlag: (state, action) => {
+      console.log(action.payload);
+    },
+    revealCell: (state, x, y) => {
+      console.log("revealCell");
     },
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -43,6 +48,7 @@ export const counterSlice = createSlice({
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
+      console.log(action);
       state.value += action.payload;
     },
   },
@@ -60,8 +66,13 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { create, increment, decrement, incrementByAmount } =
-  counterSlice.actions;
+export const {
+  updateFlag,
+  revealCell,
+  increment,
+  decrement,
+  incrementByAmount,
+} = counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
