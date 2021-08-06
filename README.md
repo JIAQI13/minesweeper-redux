@@ -25,3 +25,5 @@
 - grid: the 16\*16 array with detailed info on each cell
 - nonMinecount: score based on how many cell are shown
 - mineLocations: all mines location on bard to display when game over
+
+### run project through shell: yarn install & yarn start
