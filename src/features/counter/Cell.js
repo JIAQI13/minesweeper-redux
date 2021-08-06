@@ -22,7 +22,7 @@ export default function Cell({ details }) {
 
   const rightClickProvider = (e, details) => {
     e.preventDefault();
-    dispatch(updateFlag(details.x, details.y));
+    dispatch(updateFlag([details.x, details.y]));
     console.log(details);
   };
 

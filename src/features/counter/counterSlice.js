@@ -31,7 +31,9 @@ export const counterSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     updateFlag: (state, action) => {
-      console.log(action.payload);
+      const x = action.payload[0];
+      const y = action.payload[1];
+      state.grid[x][y].flagged = true;
     },
     revealCell: (state, x, y) => {
       console.log("revealCell");
