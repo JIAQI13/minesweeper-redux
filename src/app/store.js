@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../components/Minesweeper";
+import MinesweeperReducer from "../components/Minesweeper";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    Minesweeper: MinesweeperReducer,
   },
 });

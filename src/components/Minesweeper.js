@@ -9,8 +9,8 @@ const initialState = {
   mineLocations: newBoard.mineLocation,
 };
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const MinesweeperSlice = createSlice({
+  name: "Minesweeper",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -42,11 +42,11 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { updateFlag, revealCell } = counterSlice.actions;
+export const { updateFlag, revealCell } = MinesweeperSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectGrid = (state) => state.counter.grid;
-export const selectNonMinecount = (state) => state.counter.nonMinecount;
-export default counterSlice.reducer;
+export const selectGrid = (state) => state.Minesweeper.grid;
+export const selectNonMinecount = (state) => state.Minesweeper.nonMinecount;
+export default MinesweeperSlice.reducer;

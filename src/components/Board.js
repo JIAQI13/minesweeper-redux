@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectGrid, selectNonMinecount } from "./Minesweeper";
+import { selectGrid } from "./Minesweeper";
+// import { selectGrid, selectNonMinecount } from "./Minesweeper";
 import Cell from "./Cell";
 
 export function Board() {
   const grid = useSelector(selectGrid);
-  const nonMinecount = useSelector(selectNonMinecount);
+  // const nonMinecount = useSelector(selectNonMinecount);
   const style = {
     display: "flex",
     flexDirection: "row",
@@ -13,7 +14,7 @@ export function Board() {
 
   return (
     <>
-      <p>{(nonMinecount * 100) / (16 * 16 - 40)}</p>
+      {/* <p>{(nonMinecount * 100) / (16 * 16 - 40)}</p> */}
       <div
         style={{
           display: "flex",
