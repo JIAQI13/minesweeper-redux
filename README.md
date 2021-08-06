@@ -4,6 +4,9 @@
 
 ## 3. How you are managing styling
 
+- using prettier on vscode while coding
+- using eslint for customized rules: npm run lint:fix
+
 ## 4. Complexity of functions that display a cell
 
 ## 5. How you are storing data in redux

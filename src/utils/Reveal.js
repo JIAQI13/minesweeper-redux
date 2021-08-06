@@ -1,7 +1,4 @@
 export default function revealed(arr, x, y, newNonMinesCount) {
-  console.log(arr[x][y]);
-  console.log(newNonMinesCount);
-
   // Stack of all the cells which we
   // would like to reveal/flip
   let flipped = [];
@@ -162,6 +159,6 @@ export default function revealed(arr, x, y, newNonMinesCount) {
       newNonMinesCount--;
     }
   }
-  console.log(newNonMinesCount);
+
   return [arr, newNonMinesCount];
 }

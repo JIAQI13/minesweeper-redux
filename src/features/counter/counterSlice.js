@@ -20,7 +20,6 @@ export const counterSlice = createSlice({
       state.grid[x][y].flagged = !state.grid[x][y].flagged;
     },
     revealCell: (state, action) => {
-      // console.log(action.payload);
       const x = action.payload[0];
       const y = action.payload[1];
       state.grid[x][y].revealed = true;
@@ -32,7 +31,6 @@ export const counterSlice = createSlice({
           ].revealed = true;
         }
       } else {
-        console.log("reveal passed");
         [state.grid, state.nonMinecount] = revealed(
           state.grid,
           x,
