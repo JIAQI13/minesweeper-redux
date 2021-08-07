@@ -30,6 +30,20 @@ export const MinesweeperSlice = createSlice({
             state.mineLocations[i][1]
           ].revealed = true;
         }
+
+        //add score to backend
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            score: Math.floor(((216 - state.nonMinecount) / 216) * 100),
+          }),
+        };
+        fetch("http://localhost:5000/score", requestOptions)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          });
       } else {
         [state.grid, state.nonMinecount] = revealed(
           state.grid,

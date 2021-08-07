@@ -3,18 +3,12 @@ export default function revealed(arr, x, y, newNonMinesCount) {
   // would like to reveal/flip
   let flipped = [];
   flipped.push(arr[x][y]);
+  newNonMinesCount = newNonMinesCount - 1;
   while (flipped.length !== 0) {
     let single = flipped.pop();
-
-    if (!single.revealed) {
-      newNonMinesCount--;
-      single.revealed = true;
-    }
-
     if (single.value !== 0) {
       break;
     }
-
     //Top - Left
     if (
       single.x > 0 &&
@@ -102,13 +96,13 @@ export default function revealed(arr, x, y, newNonMinesCount) {
       //Top Left Reveal
 
       arr[single.x - 1][single.y - 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (single.y > 0 && !arr[single.x][single.y - 1].revealed) {
       // Left Reveal
       arr[single.x][single.y - 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (
@@ -118,19 +112,19 @@ export default function revealed(arr, x, y, newNonMinesCount) {
     ) {
       //Bottom Left Reveal
       arr[single.x + 1][single.y - 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (single.x > 0 && !arr[single.x - 1][single.y].revealed) {
       //Top Reveal
       arr[single.x - 1][single.y].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (single.x < arr.length - 1 && !arr[single.x + 1][single.y].revealed) {
       // Bottom Reveal
       arr[single.x + 1][single.y].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (
@@ -140,13 +134,13 @@ export default function revealed(arr, x, y, newNonMinesCount) {
     ) {
       // Top Right Reveal
       arr[single.x - 1][single.y + 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (single.y < arr[0].length - 1 && !arr[single.x][single.y + 1].revealed) {
       //Right Reveal
       arr[single.x][single.y + 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
 
     if (
@@ -156,7 +150,7 @@ export default function revealed(arr, x, y, newNonMinesCount) {
     ) {
       // Bottom Right Reveal
       arr[single.x + 1][single.y + 1].revealed = true;
-      newNonMinesCount--;
+      newNonMinesCount = newNonMinesCount - 1;
     }
   }
 

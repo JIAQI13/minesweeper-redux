@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectGrid } from "./Minesweeper";
-// import { selectGrid, selectNonMinecount } from "./Minesweeper";
+import { selectGrid, selectNonMinecount } from "./Minesweeper";
 import Cell from "./Cell";
 
 export function Board() {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetch("http://192.168.1.65:5000/score")
+      .then((res) => res.json())
+      .then((result) => {
+        setItems(result);
+      });
+  }, []);
   const grid = useSelector(selectGrid);
-  // const nonMinecount = useSelector(selectNonMinecount);
+  const nonMinecount = useSelector(selectNonMinecount);
   const style = {
     display: "flex",
     flexDirection: "row",
@@ -14,7 +21,9 @@ export function Board() {
 
   return (
     <>
-      {/* <p>{(nonMinecount * 100) / (16 * 16 - 40)}</p> */}
+      <h1>scoreboard</h1>
+      <h1>{JSON.stringify(items)}</h1>
+      <p>{Math.floor(((216 - nonMinecount) / 216) * 100)}</p>
       <div
         style={{
           display: "flex",
